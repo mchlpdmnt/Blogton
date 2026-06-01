@@ -1,70 +1,76 @@
 # Blogton
 
+**Version:** 1.0
+
 A minimalist blogging platform. Read. Write. Connect.
 
-**Stack:** Vanilla HTML5 · CSS3 · JavaScript (no build step) · Supabase · Netlify
+**Stack:** Vanilla HTML5, CSS3, JavaScript, Supabase, Netlify
 
 ---
 
 ## Local Development
 
 ```bash
-# Requires Netlify CLI (reads env vars for Supabase credentials)
+# Requires Netlify CLI because Supabase config is served by a Netlify Function.
 npm install -g netlify-cli
 netlify dev
 ```
 
-> Do **not** use `python -m http.server` — the Netlify function serving credentials won't run.
+Do not use `python -m http.server`; the Netlify function that serves runtime credentials will not run.
 
 ---
 
 ## Project Structure
 
-```
+Only committed source paths are shown here. Private/local folders such as `.env`, `.netlify/`, `issues/`, and `supabase/` are intentionally ignored.
+
+```text
 blogton/
-├── public/                  # Marketing pages (no auth required)
-│   ├── home/               # index.html + home.css + home.js
-│   ├── about/              # index.html + about.css + about.js
-│   ├── contact/            # index.html + contact.css + contact.js
-│   └── privacy/            # index.html + privacy.css + privacy.js
-│
-├── app/                     # Authenticated app pages
-│   ├── feed/               # index.html + feed.css + feed.js
-│   ├── blog/               # index.html + blog.css + blog.js
-│   ├── profile/            # index.html + profile.css + profile.js
-│   ├── settings/           # index.html + settings.css + settings.js
-│   ├── user/               # index.html + user.css + user.js
-│   └── search/             # index.html + search.css + search.js
-│
-├── scripts/                 # Shared business logic
-│   ├── supabaseClient.js   # Supabase init (fetches creds from Netlify fn)
-│   ├── auth.js             # Auth helpers (requireAuth, logIn, signUp…)
-│   ├── utils.js            # TobUtils — toast, escapeHtml, formatCount…
-│   ├── transitions.js      # Page fade + progress bar
-│   ├── userProfile.js      # UserProfile — cached profile store
-│   ├── public-shell.js     # Shared sidebar/theme/auth modal for public pages
-│   ├── components/
-│   │   └── nav.js          # App navbar (Nav.render, ComposeModal integration)
-│   └── modules/
-│       ├── blogCard.js     # BlogCard.create — canonical card builder
-│       ├── composeModal.js # ComposeModal — create/edit post dialog
-│       ├── interactions.js # Interactions — likes, stars, counts
-│       ├── navSearch.js    # NavSearch — debounced search dropdown
-│       └── profileStore.js # ProfileStore — profile CRUD and image upload
-│
-├── styles/
-│   ├── main.css            # Entry point — imports base + components
-│   ├── base/
-│   │   ├── tokens.css      # Design tokens (CSS custom properties)
-│   │   └── reset.css       # CSS reset
-│   └── components/         # Shared component styles
-│
-├── assets/                  # Static assets (favicons, SVG icons)
-├── netlify/functions/       # Serverless: config.js serves Supabase creds
-├── supabase/                # DB schema + migrations
-├── _redirects               # Netlify server-side routing
-├── _headers                 # Security headers
-└── netlify.toml             # Build config (no build command)
+|-- public/                  # Public marketing pages
+|   |-- home/                # Landing page
+|   |-- about/               # About page
+|   |-- contact/             # Contact page
+|   `-- privacy/             # Privacy page
+|
+|-- app/                     # App pages
+|   |-- feed/                # Feed page
+|   |-- blog/                # Blog detail page
+|   |-- profile/             # Current user profile
+|   |-- settings/            # Account settings
+|   |-- user/                # Public user profile
+|   `-- search/              # Search page
+|
+|-- scripts/                 # Shared JavaScript
+|   |-- supabaseClient.js    # Supabase initialization
+|   |-- auth.js              # Auth helpers
+|   |-- utils.js             # Shared UI/data utilities
+|   |-- transitions.js       # Page transitions and top progress bar
+|   |-- userProfile.js       # Cached profile store
+|   |-- public-shell.js      # Shared public-page shell
+|   |-- components/
+|   |   `-- nav.js           # App navbar
+|   `-- modules/
+|       |-- blogCard.js      # Canonical blog card renderer
+|       |-- composeModal.js  # Create/edit post modal
+|       |-- interactions.js  # Likes, stars, comments, counts
+|       |-- navSearch.js     # Navbar search
+|       `-- profileStore.js  # Profile CRUD and image upload
+|
+|-- styles/
+|   |-- main.css             # Global stylesheet entry point
+|   |-- base/
+|   |   |-- tokens.css       # Design tokens
+|   |   `-- reset.css        # Reset/base styles
+|   `-- components/          # Shared component styles
+|
+|-- assets/                  # Favicons and static assets
+|-- netlify/functions/       # Serverless functions
+|   `-- config.js            # Runtime Supabase config endpoint
+|-- _redirects               # Netlify routing
+|-- _headers                 # Security headers
+|-- netlify.toml             # Netlify config
+|-- .env.example             # Environment variable template
+`-- .gitignore               # Ignored private/local files
 ```
 
 ---
@@ -72,31 +78,70 @@ blogton/
 ## Architecture
 
 ### Routing
-Clean URLs handled entirely by Netlify via `_redirects`. No client-side router.
 
-| URL          | Resolves to                   |
-|--------------|-------------------------------|
-| `/`          | `public/home/index.html`      |
-| `/about`     | `public/about/index.html`     |
-| `/feed`      | `app/feed/index.html`         |
-| `/user/*`    | `app/user/index.html`         |
+Clean URLs are handled by Netlify via `_redirects`. There is no client-side router.
 
-### Script Loading Order (App Pages)
+| URL       | Resolves to                |
+|-----------|----------------------------|
+| `/`       | `public/home/index.html`   |
+| `/about`  | `public/about/index.html`  |
+| `/feed`   | `app/feed/index.html`      |
+| `/user/*` | `app/user/index.html`      |
+
+### Script Loading Order
+
+```text
+Supabase CDN UMD -> supabaseClient.js -> transitions.js -> utils.js
+-> auth.js -> userProfile.js -> modules -> components/nav.js -> page script
 ```
-Supabase CDN UMD  →  supabaseClient.js  →  transitions.js  →  utils.js
-→  auth.js  →  userProfile.js  →  [modules]  →  components/nav.js  →  [page].js
-```
 
-`supabaseClient.js` dispatches `supabaseReady` on `window` once the client is initialized. All page scripts listen for this event before making any Supabase calls.
-
-### Credentials Security
-Supabase credentials are **never in source**. They live in Netlify environment variables and are served at runtime by `netlify/functions/config.js` via `/.netlify/functions/config`.
+`supabaseClient.js` dispatches `supabaseReady` on `window` once the client is initialized. Page scripts wait for that event before making Supabase calls.
 
 ---
 
 ## Deployment
 
-1. Push to `main` — Netlify auto-deploys
-2. Set env vars in Netlify dashboard: `SUPABASE_URL`, `SUPABASE_ANON_KEY`
-3. Set Supabase Edge Function secrets: `SUPABASE_SERVICE_ROLE_KEY`
-4. Apply `supabase/schema.sql` in the Supabase SQL editor
+1. Push `main` to GitHub.
+2. Connect the GitHub repo to Netlify.
+3. Set Netlify environment variables:
+   `SUPABASE_URL`, `SUPABASE_ANON_KEY`
+4. Keep database schema, migrations, and Supabase admin assets outside the public repo unless they are intentionally sanitized for release.
+
+---
+
+## Release 1.0
+
+Blogton 1.0 is the first GitHub release of the refactored app.
+
+Included in version 1.0:
+
+- Public pages for home, about, contact, and privacy.
+- App pages for feed, blog detail, profiles, search, and settings.
+- Shared blog card renderer for consistent post cards across pages.
+- Shared compose modal for creating and editing posts.
+- Shared interaction handling for likes, favorites, comments, and counts.
+- Netlify runtime config function for Supabase browser credentials.
+- Clean Netlify routing through `_redirects`.
+- Mobile tap highlight removed from interactive surfaces.
+- Top page progress bar changed from green to the site accent color.
+
+---
+
+## Devlog 1.0
+
+- Consolidated repeated page logic into shared modules under `scripts/modules/`.
+- Moved shared UI styling into `styles/base/` and `styles/components/`.
+- Added global reset behavior for mobile tap highlights.
+- Updated transition progress styling to use `var(--accent, #111110)`.
+- Kept local-only folders out of source control through `.gitignore`.
+
+---
+
+## Security 1.0
+
+- Real environment files are ignored: `.env` and `.env.local`.
+- Netlify local state is ignored: `.netlify/`.
+- Supabase project files are ignored by default: `supabase/`.
+- Issue screenshots and local debugging artifacts are ignored: `issues/`.
+- Browser Supabase values are served at runtime by `netlify/functions/config.js`.
+- Do not commit service-role keys, production database dumps, or unsanitized migration data.
