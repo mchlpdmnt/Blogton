@@ -1,0 +1,23 @@
+/* =========================================================
+   MAIN.CSS — Global stylesheet entry point
+   Every page links this once for shared tokens + components.
+   Page-specific CSS is co-located with its page file.
+
+   Load order: base → components
+   ========================================================= */
+
+/* ── Base ── */
+@import url('base/tokens.css');
+@import url('base/reset.css');
+
+/* ── Components ── */
+@import url('components/buttons.css');
+@import url('components/navbar.css');
+@import url('components/modal.css');
+@import url('components/card.css');
+@import url('components/tabs.css');
+@import url('components/skeleton.css');
+@import url('components/toast.css');
+@import url('components/search-overlay.css');
+@import url('components/empty-state.css');
+@import url('components/layout.css');

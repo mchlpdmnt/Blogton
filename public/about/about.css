@@ -1,0 +1,451 @@
+/* =========================================================
+   ABOUT PAGE — Editorial redesign
+   Four distinct sections: Hero · Principles · Pullquote · Creator
+   ========================================================= */
+
+body.page-about {
+  overflow-x: clip;
+  overflow-y: auto;
+  height: auto;
+  background: var(--bg);
+}
+
+/* ── Shared eyebrow ── */
+.ab-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  display: block;
+}
+
+/* ── Tag chips ── */
+.ab-tag {
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: oklch(94% 0.005 88 / 0.38);
+}
+.ab-tag-sep {
+  margin: 0 0.6rem;
+  color: oklch(94% 0.005 88 / 0.18);
+}
+
+/* =========================================================
+   HERO
+   Always dark. Title in two styles: roman + italic.
+   ========================================================= */
+.ab-hero {
+  background: oklch(10.5% 0.009 80);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding:
+    calc(var(--nav-h) + 5vh)
+    clamp(2rem, 8vw, 10rem)
+    clamp(3rem, 6vh, 5rem);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grain texture overlay */
+.ab-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Accent glow top-right */
+.ab-hero::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(94% 0.005 88 / 0.04) 0%, transparent 65%);
+  top: -100px;
+  right: -200px;
+  pointer-events: none;
+}
+
+.ab-hero-inner {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(2rem, 6vh, 5rem);
+}
+
+.ab-hero-meta {
+  margin-bottom: clamp(2.5rem, 5vh, 4.5rem);
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.ab-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3.6rem, 9vw, 9rem);
+  font-weight: 400;
+  line-height: 0.93;
+  letter-spacing: -0.04em;
+  color: oklch(94% 0.005 88);
+  margin: 0 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.ab-line {
+  display: block;
+  overflow: hidden;
+}
+
+.ab-line span {
+  display: block;
+  transform: translateY(110%);
+  opacity: 0;
+}
+
+.ab-hero-title em {
+  font-style: italic;
+  color: oklch(94% 0.005 88);
+}
+
+.ab-hero-sub {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: oklch(94% 0.005 88 / 0.4);
+  max-width: 380px;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(14px);
+  letter-spacing: 0.01em;
+}
+
+/* Scroll hint */
+.ab-hero-scroll-hint {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: oklch(94% 0.005 88 / 0.22);
+  opacity: 0;
+}
+
+.ab-scroll-dot {
+  animation: ab-scroll-bounce 1.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes ab-scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  60%       { transform: translateY(7px); opacity: 0.3; }
+}
+
+/* =========================================================
+   PRINCIPLES
+   Off-white background. Three numbered columns.
+   ========================================================= */
+.ab-principles {
+  background: var(--bg);
+  padding: clamp(5rem, 10vw, 9rem) clamp(2rem, 8vw, 10rem);
+  border-bottom: 1px solid var(--border);
+}
+
+.ab-principles-header {
+  margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.ab-principles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.ab-principle {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.ab-principle-num {
+  font-family: var(--serif);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.05em;
+}
+
+.ab-principle-title {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--fg);
+  margin: 0 0 1.5rem;
+}
+
+.ab-principle-body {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  line-height: 1.85;
+  color: var(--muted);
+  margin: 0;
+  max-width: 300px;
+}
+
+/* Separator line between principles */
+.ab-principle + .ab-principle {
+  border-left: 1px solid var(--border);
+  padding-left: clamp(2rem, 4vw, 4rem);
+}
+
+/* =========================================================
+   PULL QUOTE — full-bleed dark typographic moment
+   ========================================================= */
+.ab-pullquote {
+  background: oklch(10.5% 0.009 80);
+  padding: clamp(6rem, 13vw, 12rem) clamp(2rem, 8vw, 10rem);
+  position: relative;
+  overflow: hidden;
+}
+
+.ab-pullquote::before {
+  content: '\201C';
+  position: absolute;
+  font-family: var(--serif);
+  font-size: clamp(16rem, 28vw, 28rem);
+  font-weight: 400;
+  line-height: 1;
+  color: oklch(94% 0.005 88 / 0.03);
+  top: -2rem;
+  left: clamp(1rem, 5vw, 6rem);
+  pointer-events: none;
+  user-select: none;
+}
+
+.ab-pullquote-inner {
+  opacity: 0;
+  transform: translateY(30px);
+  position: relative;
+  z-index: 1;
+}
+
+.ab-bq {
+  margin: 0;
+  max-width: 900px;
+}
+
+.ab-bq p {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4.2vw, 4rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  color: oklch(94% 0.005 88);
+  margin: 0;
+}
+
+/* =========================================================
+   CREATOR — asymmetric layout with ruled lines
+   ========================================================= */
+.ab-creator {
+  background: var(--bg);
+  padding: clamp(5rem, 10vw, 9rem) clamp(2rem, 8vw, 10rem) clamp(3rem, 5vw, 5rem);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 5vw, 5rem);
+}
+
+.ab-creator-label {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.ab-creator-body {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(3rem, 7vw, 8rem);
+  align-items: start;
+}
+
+.ab-creator-name-block {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.ab-creator-name {
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 4.5vw, 5rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  color: var(--fg);
+  margin: 0 0 1.25rem;
+  white-space: nowrap;
+}
+
+.ab-creator-url {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: opacity 0.2s;
+  display: block;
+}
+
+.ab-creator-url:hover {
+  opacity: 0.7;
+}
+
+.ab-creator-content {
+  opacity: 0;
+  transform: translateY(24px);
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.ab-creator-intro {
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-style: italic;
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  margin: 0 0 2rem;
+  max-width: 560px;
+}
+
+.ab-creator-detail {
+  font-family: var(--sans);
+  font-size: 0.87rem;
+  line-height: 1.9;
+  color: var(--muted);
+  margin: 0 0 1.25rem;
+  max-width: 560px;
+}
+
+.ab-creator-detail:last-of-type {
+  margin-bottom: 2.5rem;
+}
+
+.ab-creator-detail em {
+  color: var(--fg);
+  font-style: italic;
+}
+
+.ab-creator-cta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Footer bar */
+.ab-creator-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+  margin-top: 1rem;
+}
+
+.ab-creator-copy {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.ab-foot-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.ab-foot-nav a {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.ab-foot-nav a:hover {
+  color: var(--fg);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 900px) {
+  .ab-principles-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .ab-principle + .ab-principle {
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 3rem;
+  }
+  .ab-creator-body {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .ab-creator-name {
+    white-space: normal;
+  }
+  .ab-creator-content {
+    border-top: none;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .ab-hero {
+    padding: calc(var(--nav-h) + 3rem) 1.5rem 2.5rem;
+  }
+  .ab-principles {
+    padding: 4rem 1.5rem;
+  }
+  .ab-pullquote {
+    padding: 5rem 1.5rem;
+  }
+  .ab-creator {
+    padding: 4rem 1.5rem 3rem;
+  }
+  .ab-creator-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .ab-bq p {
+    font-size: 1.75rem;
+  }
+}

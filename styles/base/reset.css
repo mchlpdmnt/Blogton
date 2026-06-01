@@ -1,0 +1,45 @@
+/* =========================================================
+   RESET & BASE
+   ========================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--fg);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* =========================================================
+   GLOBAL SCROLLBAR — thumb only, track + buttons invisible
+   Works for every page; override per-element where needed.
+   ========================================================= */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+*:hover {
+  scrollbar-color: var(--border) transparent;
+}
+
+/* Webkit (Chrome / Safari / Edge) */
+::-webkit-scrollbar               { width: 4px; height: 4px; }
+::-webkit-scrollbar-track         { background: transparent; }
+::-webkit-scrollbar-thumb         { background: transparent; border-radius: 999px; transition: background 0.2s; }
+::-webkit-scrollbar-thumb:hover   { background: var(--border); }
+::-webkit-scrollbar-button        { display: none; height: 0; width: 0; }
+::-webkit-scrollbar-corner        { background: transparent; }
+
+/* Reveal thumb only while actively scrolling (JS class toggled below) */
+.is-scrolling::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb { background: var(--border); }
+html::-webkit-scrollbar-thumb:hover { background: var(--muted); }

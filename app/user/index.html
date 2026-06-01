@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('tob-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile — Blogton</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/app/profile/profile.css">
+  <link rel="stylesheet" href="/app/user/user.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png"     href="/assets/favicon.png">
+</head>
+
+<body class="page-user">
+
+<div class="toast-container" id="toast-container"></div>
+
+  <main class="app-page" id="profile-page">
+    <div id="profile-content">
+      <!-- Populated by user.js -->
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/scripts/supabaseClient.js"></script>
+  <script src="/scripts/transitions.js"></script>
+  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/userProfile.js"></script>
+  <script src="/scripts/modules/interactions.js"></script>
+  <script src="/scripts/modules/blogCard.js"></script>
+  <script src="/scripts/modules/profileStore.js"></script>
+  <script src="/scripts/modules/composeModal.js"></script>
+  <script src="/scripts/modules/navSearch.js"></script>
+  <script src="/scripts/components/nav.js"></script>
+  <script src="/app/user/user.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+# ── Public Marketing Pages ──────────────────────────────
+/           /public/home/index.html     200
+/home       /public/home/index.html     200
+/about      /public/about/index.html    200
+/contact    /public/contact/index.html  200
+/privacy    /public/privacy/index.html  200
+
+# ── Authenticated App Pages ──────────────────────────────
+/feed       /app/feed/index.html        200
+/blog       /app/blog/index.html        200
+/profile    /app/profile/index.html     200
+/settings   /app/settings/index.html    200
+/search     /app/search/index.html      200
+
+# ── User Profile — Facebook-style /:username ─────────────
+# MUST be last. Netlify matches rules top-to-bottom, first match wins.
+# Every named route above is already matched before this catch-all fires,
+# so /home, /feed, /settings etc. are never accidentally swallowed here.
+# user.js reads the path via usernameFromPath() and queries Supabase
+# for the matching profile. Unknown usernames render a "User not found" state.
+/:username  /app/user/index.html        200

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('tob-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search — Blogton</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/app/search/search.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png"     href="/assets/favicon.png">
+</head>
+
+<body class="page-search">
+
+<div class="toast-container" id="toast-container"></div>
+
+  <main class="app-page" id="search-page">
+    <h1 class="page-title" id="search-heading">Search <em>Results</em></h1>
+
+    <!-- Inline search bar on results page -->
+    <div class="search-page-bar" id="search-page-bar">
+      <svg class="search-page-bar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513.749 513.749" aria-hidden="true">
+        <path d="M504.352,459.061l-99.435-99.477c74.402-99.427,54.115-240.344-45.312-314.746S119.261-9.277,44.859,90.15S-9.256,330.494,90.171,404.896c79.868,59.766,189.565,59.766,269.434,0l99.477,99.477c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L504.352,459.061zM225.717,385.696c-88.366,0-160-71.634-160-160s71.634-160,160-160s160,71.634,160,160C385.623,314.022,314.044,385.602,225.717,385.696z"/>
+      </svg>
+      <input type="text" id="search-page-input" placeholder="Search users and blogs…" autocomplete="off" spellcheck="false">
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs" id="search-tabs" style="display:none;">
+      <button class="tab-btn active" data-tab="blogs">Blogs</button>
+      <button class="tab-btn" data-tab="users">Users</button>
+    </div>
+
+    <!-- Results container -->
+    <div id="search-results-content"></div>
+
+    <!-- States -->
+    <div id="search-loader" class="empty-state" style="display:none;">
+      <p>Searching…</p>
+    </div>
+    <div id="search-empty" class="empty-state" style="display:none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 513.749 513.749" fill="currentColor">
+        <path d="M504.352,459.061l-99.435-99.477c74.402-99.427,54.115-240.344-45.312-314.746S119.261-9.277,44.859,90.15S-9.256,330.494,90.171,404.896c79.868,59.766,189.565,59.766,269.434,0l99.477,99.477c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L504.352,459.061zM225.717,385.696c-88.366,0-160-71.634-160-160s71.634-160,160-160s160,71.634,160,160C385.623,314.022,314.044,385.602,225.717,385.696z"/>
+      </svg>
+      <p id="search-empty-msg">No results found.</p>
+    </div>
+    <div id="search-prompt" class="empty-state">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 513.749 513.749" fill="currentColor">
+        <path d="M504.352,459.061l-99.435-99.477c74.402-99.427,54.115-240.344-45.312-314.746S119.261-9.277,44.859,90.15S-9.256,330.494,90.171,404.896c79.868,59.766,189.565,59.766,269.434,0l99.477,99.477c12.501,12.501,32.769,12.501,45.269,0c12.501-12.501,12.501-32.769,0-45.269L504.352,459.061zM225.717,385.696c-88.366,0-160-71.634-160-160s71.634-160,160-160s160,71.634,160,160C385.623,314.022,314.044,385.602,225.717,385.696z"/>
+      </svg>
+      <p>Type something to search across all blogs and users.</p>
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/scripts/supabaseClient.js"></script>
+  <script src="/scripts/transitions.js"></script>
+  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/userProfile.js"></script>
+  <script src="/scripts/modules/interactions.js"></script>
+  <script src="/scripts/modules/blogCard.js"></script>
+  <script src="/scripts/modules/profileStore.js"></script>
+  <script src="/scripts/modules/composeModal.js"></script>
+  <script src="/scripts/modules/navSearch.js"></script>
+  <script src="/scripts/components/nav.js"></script>
+  <script src="/app/search/search.js"></script>
+</body>
+</html>

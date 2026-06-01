@@ -1,0 +1,229 @@
+body.page-privacy {
+      padding-top: var(--nav-h);
+    }
+
+    /* ── Page layout ── */
+    .privacy-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: calc(100dvh - var(--nav-h));
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      gap: 4rem;
+      overflow: visible;
+    }
+
+    /* ── Sticky sidebar TOC ── */
+    .privacy-toc {
+      padding: 3rem 0;
+      position: sticky;
+      top: calc(var(--nav-h) + 2rem);
+      height: fit-content;
+    }
+
+    .toc-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .toc-item a {
+      display: block;
+      padding: 0.5rem 0;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-left: 2px solid var(--border);
+      padding-left: 0.9rem;
+      transition: color 0.2s, border-color 0.2s;
+      line-height: 1.4;
+    }
+    .toc-item a:hover,
+    .toc-item a.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    /* ── Main content ── */
+    .privacy-content {
+      padding: 3.5rem 0 5rem;
+    }
+
+    .privacy-header {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .priv-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .privacy-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--fg);
+      margin-bottom: 1rem;
+    }
+
+    .privacy-meta {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    /* Startup notice banner */
+    .startup-notice {
+      background: var(--accent-dim);
+      border: 1px solid rgba(0,103,79,0.2);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 3rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .startup-notice-icon {
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      color: var(--accent);
+      margin-top: 1px;
+    }
+    .startup-notice p {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--accent);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── Privacy sections ── */
+    .priv-section {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: calc(var(--nav-h) + 2rem);
+    }
+
+    .priv-section-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: var(--fg);
+      letter-spacing: -0.015em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .priv-section p {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 0.85rem;
+    }
+    .priv-section p:last-child { margin-bottom: 0; }
+
+    /* Data table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.25rem 0;
+      font-family: var(--sans);
+    }
+    .data-table th {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      text-align: left;
+      padding: 0.6rem 0.85rem;
+      border-bottom: 2px solid var(--border);
+      background: var(--surface);
+    }
+    .data-table td {
+      font-size: 0.83rem;
+      color: var(--fg);
+      padding: 0.75rem 0.85rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.55;
+    }
+    .data-table td.muted { color: var(--muted); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: var(--surface); }
+
+    /* Highlight badge */
+    .priv-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+    .priv-badge.green  { border-color: rgba(0,103,79,0.35); color: var(--accent); background: var(--accent-dim); }
+    .priv-badge.gray   { border-color: var(--border); color: var(--muted); background: var(--surface); }
+
+    /* ── Footer ── */
+    .privacy-footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .privacy-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 0 1.25rem;
+      }
+      .privacy-toc { display: none; }
+      .privacy-content { padding: 2rem 0 4rem; }
+    }
+
+/* ── Single scroll root fix ──
+   html becomes non-scrolling; body.page-privacy is the one scroll container.
+   This eliminates the double-scrollbar caused by overflow-x:hidden on body
+   forcing a second BFC scroll context. */
+html:has(body.page-privacy) {
+  overflow: hidden;
+  height: 100%;
+  scroll-behavior: smooth;
+}
+body.page-privacy {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}

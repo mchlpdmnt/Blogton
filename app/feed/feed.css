@@ -1,0 +1,141 @@
+/* =========================================================
+   FEED PAGE — Masonry columns, vertical scroll
+   ========================================================= */
+
+body.page-feed { overflow-y: auto; }
+
+.feed-page-root {
+  padding: calc(var(--nav-h) + 2.25rem) 1.5rem 5rem;
+  max-width: 1380px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* ── Hero heading ── */
+.feed-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.feed-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+  min-height: 1.4em; /* prevent layout shift while greeting loads */
+}
+
+/* @username inside the h1 greeting */
+.feed-greeting-user {
+  font-style: italic;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+/* Subtitle below the h1 */
+.feed-hero-sub {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* ── JS-driven masonry container ──
+   JS reads --masonry-cols once on init and builds that
+   many column divs. Columns are never rebuilt on resize;
+   the layout adapts naturally as the viewport changes.  */
+.feed-masonry {
+  --masonry-cols: 4;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Column wrappers injected by JS */
+.feed-masonry-col {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Each card fills its column naturally */
+.feed-masonry .blog-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  break-inside: avoid;
+}
+
+/* ── Scroll hint ── */
+.feed-scroll-hint {
+  text-align: center;
+  margin-top: 1.75rem;
+  color: var(--muted);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  transition: opacity 0.4s;
+}
+
+/* ── Loading dots ── */
+.feed-loader-state {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 2rem 0;
+}
+.feed-loader-state span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+  animation: feed-dot-bounce 1.2s ease-in-out infinite;
+}
+.feed-loader-state span:nth-child(2) { animation-delay: 0.2s; }
+.feed-loader-state span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes feed-dot-bounce {
+  0%, 80%, 100% { transform: scale(0.7); opacity: 0.4; }
+  40%           { transform: scale(1);   opacity: 1; }
+}
+
+/* ── Empty state ── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  grid-column: 1 / -1;
+}
+.empty-state svg { opacity: 0.3; }
+.empty-state p   { font-size: 0.95rem; }
+
+/* ── Responsive column count ──
+   JS reads --masonry-cols once; these breakpoints only
+   affect sessions that start at that viewport width.   */
+@media (max-width: 1100px) {
+  .feed-masonry { --masonry-cols: 3; }
+}
+@media (max-width: 768px) {
+  .feed-masonry   { --masonry-cols: 2; }
+  .feed-page-root { padding: calc(var(--nav-h) + 1.5rem) 0.9rem 4rem; }
+  .feed-hero      { margin-bottom: 1.5rem; }
+}
+@media (max-width: 480px) {
+  .feed-masonry   { --masonry-cols: 1; }
+  .feed-page-root { padding: calc(var(--nav-h) + 1rem) 0.75rem 3rem; }
+}

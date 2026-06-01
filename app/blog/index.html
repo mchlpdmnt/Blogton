@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('tob-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Blogton</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/app/blog/blog.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png"     href="/assets/favicon.png">
+</head>
+
+<body class="page-blog">
+
+<div class="toast-container" id="toast-container"></div>
+
+  <main class="blog-page-root">
+
+    <div class="blog-back-row">
+      <button class="blog-back-btn" onclick="history.back()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        Back
+      </button>
+    </div>
+
+    <!-- Mobile: author + actions render here, above the title -->
+    <div class="blog-meta-top" id="blog-meta-top"></div>
+
+    <!-- Title renders full-width above the two-column grid -->
+    <h1 class="blog-detail-title" id="blog-title" style="display:none;"></h1>
+
+    <div class="blog-layout">
+      <div class="blog-main" id="blog-content"></div>
+      <aside class="blog-sidebar" id="blog-sidebar"></aside>
+    </div>
+
+  </main>
+
+  <!-- Delete post modal -->
+  <div class="modal-backdrop hidden" id="delete-modal">
+    <div class="confirm-modal">
+      <h3>Delete Post?</h3>
+      <p>This action cannot be undone.</p>
+      <div class="confirm-modal-actions">
+        <button class="btn btn-ghost" id="delete-cancel-btn">Cancel</button>
+        <button class="btn-danger" id="delete-confirm-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete comment modal -->
+  <div class="modal-backdrop hidden" id="comment-delete-modal">
+    <div class="confirm-modal">
+      <h3>Delete Comment?</h3>
+      <p>This cannot be undone.</p>
+      <div class="confirm-modal-actions">
+        <button class="btn btn-ghost" id="comment-delete-cancel-btn">Cancel</button>
+        <button class="btn-danger" id="comment-delete-confirm-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/scripts/supabaseClient.js"></script>
+  <script src="/scripts/transitions.js"></script>
+  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/userProfile.js"></script>
+  <script src="/scripts/modules/interactions.js"></script>
+  <script src="/scripts/modules/blogCard.js"></script>
+  <script src="/scripts/modules/profileStore.js"></script>
+  <script src="/scripts/modules/composeModal.js"></script>
+  <script src="/scripts/modules/navSearch.js"></script>
+  <script src="/scripts/components/nav.js"></script>
+  <script src="/app/blog/blog.js"></script>
+</body>
+</html>

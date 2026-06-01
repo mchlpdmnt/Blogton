@@ -1,0 +1,29 @@
+/* =========================================================
+   TABS
+   Source: app.css lines 381-405
+   ========================================================= */
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.75rem;
+  gap: 0;
+}
+.tab-btn {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0.65rem 1.2rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.18s, border-color 0.18s;
+}
+.tab-btn:hover { color: var(--fg); }
+.tab-btn.active {
+  color: var(--fg);
+  font-weight: 500;
+  border-bottom-color: var(--accent);
+}

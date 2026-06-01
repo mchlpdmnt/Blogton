@@ -1,0 +1,50 @@
+/* =========================================================
+   DESIGN TOKENS — Blogton redesign
+   OKLCH color space. Warm paper light / warm ink dark.
+   All existing token names preserved for backward compat.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Outfit:wght@400;500;600&display=swap');
+
+:root {
+  /* Accent — ink black */
+  --accent:     oklch(15% 0.006 80);
+  --accent-dim: oklch(15% 0.006 80 / 0.07);
+  --accent-mid: oklch(26% 0.006 80);
+
+  /* Neutrals — warm paper */
+  --fg:         oklch(13% 0.012 80);
+  --bg:         oklch(98.5% 0.007 88);
+  --bg-rgb:     250, 249, 246;
+  --surface:    oklch(95.5% 0.007 88);
+  --border:     oklch(87% 0.006 88);
+  --muted:      oklch(50% 0.010 82);
+
+  /* Fonts */
+  --serif:      'EB Garamond', Garamond, Georgia, serif;
+  --sans:       'Outfit', system-ui, -apple-system, sans-serif;
+  --logo-font:  'EB Garamond', Garamond, Georgia, serif;
+  --mono:       'Fira Code', 'Cascadia Code', monospace;
+
+  /* Motion */
+  --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-expo:  cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --nav-h:      62px;
+  --max-w:      1360px;
+}
+
+[data-theme="dark"] {
+  --accent:     oklch(88% 0.006 80);
+  --accent-dim: oklch(88% 0.006 80 / 0.10);
+  --accent-mid: oklch(78% 0.006 80);
+
+  --fg:         oklch(91% 0.008 82);
+  --bg:         oklch(11.5% 0.010 80);
+  --bg-rgb:     28, 27, 25;
+  --surface:    oklch(15.5% 0.010 80);
+  --border:     oklch(24% 0.008 80);
+  --muted:      oklch(57% 0.009 80);
+}

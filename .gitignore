@@ -1,0 +1,8 @@
+.env
+.env.local
+.netlify/
+node_modules/
+*.log
+.DS_Store
+issues/
+supabase/

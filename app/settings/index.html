@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('tob-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Blogton</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/app/settings/settings.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+</head>
+
+<body class="page-settings">
+  <div class="toast-container" id="toast-container"></div>
+
+  <main class="app-page" id="settings-page">
+    <div class="settings-container">
+      <header class="settings-header">
+        <button class="settings-back-btn" id="settings-back-btn" aria-label="Back" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5"></path>
+            <path d="M12 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+        <h1 class="settings-title">Settings</h1>
+      </header>
+      <div id="settings-content"></div>
+    </div>
+  </main>
+
+  <div class="modal-backdrop hidden settings-modal-backdrop" id="settings-logout-modal" aria-hidden="true">
+    <div class="settings-modal" role="dialog" aria-modal="true" aria-labelledby="settings-logout-title">
+      <h3 id="settings-logout-title">Log out?</h3>
+      <p>You will need to sign in again to write, comment, or manage your profile.</p>
+      <div class="settings-modal-actions">
+        <button class="btn btn-ghost" id="logout-cancel-btn" type="button">Cancel</button>
+        <button class="btn-danger" id="logout-confirm-btn" type="button">Log out</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop hidden settings-modal-backdrop" id="settings-email-modal" aria-hidden="true">
+    <form class="settings-modal settings-modal-form" id="settings-email-form" role="dialog" aria-modal="true" aria-labelledby="settings-email-title">
+      <h3 id="settings-email-title">Change email</h3>
+      <p>Enter your current password before changing your email address.</p>
+      <div class="settings-modal-field">
+        <label for="modal-current-password-email">Current password</label>
+        <input type="password" id="modal-current-password-email" autocomplete="current-password" required>
+      </div>
+      <div class="settings-modal-field">
+        <label for="modal-new-email">New email address</label>
+        <input type="email" id="modal-new-email" autocomplete="email" required>
+      </div>
+      <div class="settings-modal-actions">
+        <button class="btn btn-ghost" id="email-cancel-btn" type="button">Cancel</button>
+        <button class="btn btn-outline" id="email-submit-btn" type="submit">Send confirmation</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-backdrop hidden settings-modal-backdrop" id="settings-password-modal" aria-hidden="true">
+    <form class="settings-modal settings-modal-form" id="settings-password-form" role="dialog" aria-modal="true" aria-labelledby="settings-password-title">
+      <h3 id="settings-password-title">Change password</h3>
+      <p>Confirm your current password before setting a new one.</p>
+      <div class="settings-modal-field">
+        <label for="modal-current-password-change">Current password</label>
+        <input type="password" id="modal-current-password-change" autocomplete="current-password" required>
+      </div>
+      <div class="settings-modal-field">
+        <label for="modal-new-password">New password</label>
+        <input type="password" id="modal-new-password" autocomplete="new-password" minlength="8" required>
+      </div>
+      <div class="settings-modal-field">
+        <label for="modal-confirm-password">Confirm new password</label>
+        <input type="password" id="modal-confirm-password" autocomplete="new-password" minlength="8" required>
+      </div>
+      <div class="settings-modal-actions">
+        <button class="btn btn-ghost" id="password-cancel-btn" type="button">Cancel</button>
+        <button class="btn btn-outline" id="password-submit-btn" type="submit">Update password</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-backdrop hidden settings-modal-backdrop" id="settings-delete-password-modal" aria-hidden="true">
+    <form class="settings-modal settings-modal-form" id="settings-delete-password-form" role="dialog" aria-modal="true" aria-labelledby="settings-delete-password-title">
+      <h3 id="settings-delete-password-title">Confirm deletion</h3>
+      <p>Enter your current password before continuing to the final deletion step.</p>
+      <div class="settings-modal-field">
+        <label for="modal-delete-password">Current password</label>
+        <input type="password" id="modal-delete-password" autocomplete="current-password" required>
+      </div>
+      <div class="settings-modal-actions">
+        <button class="btn btn-ghost" id="delete-password-cancel-btn" type="button">Cancel</button>
+        <button class="btn-danger" id="delete-password-submit-btn" type="submit">Continue</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-backdrop hidden settings-modal-backdrop" id="settings-delete-username-modal" aria-hidden="true">
+    <form class="settings-modal settings-modal-form" id="settings-delete-username-form" role="dialog" aria-modal="true" aria-labelledby="settings-delete-username-title">
+      <h3 id="settings-delete-username-title">Delete profile?</h3>
+      <p>Type your username to permanently delete your profile, posts, comments, and account data.</p>
+      <div class="settings-modal-field">
+        <label for="modal-delete-username">Username</label>
+        <input type="text" id="modal-delete-username" autocomplete="off" required>
+      </div>
+      <div class="settings-modal-actions">
+        <button class="btn btn-ghost" id="delete-username-cancel-btn" type="button">Cancel</button>
+        <button class="btn-danger" id="delete-username-submit-btn" type="submit">Delete account</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/scripts/supabaseClient.js"></script>
+  <script src="/scripts/transitions.js"></script>
+  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/userProfile.js"></script>
+  <script src="/scripts/modules/profileStore.js"></script>
+  <script src="/scripts/modules/composeModal.js"></script>
+  <script src="/scripts/modules/navSearch.js"></script>
+  <script src="/scripts/components/nav.js"></script>
+  <script src="/app/settings/settings.js"></script>
+</body>
+</html>

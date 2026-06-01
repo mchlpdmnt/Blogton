@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('tob-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogton — Read. Write. Connect.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/public/home/home.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png"     href="/assets/favicon.png">
+</head>
+
+<body class="page-home">
+
+<!-- ── NAVBAR ── -->
+  <nav class="navbar" id="g-nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">Blogton.</a>
+      <div class="nav-right">
+        <a href="/"    class="nav-link">Home</a>
+        <a href="/about"   class="nav-link">About</a>
+        <a href="/privacy" class="nav-link">Privacy</a>
+        <a href="/contact" class="nav-link">Contact</a>
+        <button class="btn-hamburger pub-burger" id="sidebar-open" aria-label="Open menu" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Mobile sidebar drawer ── -->
+  <div class="pub-sidebar" id="sidebar" aria-hidden="true">
+    <div class="pub-sidebar-header">
+      <span class="pub-sidebar-logo">Menu</span>
+      <button class="pub-sidebar-close" id="sidebar-close" aria-label="Close menu" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="pub-sidebar-nav">
+      <a href="/"    class="pub-sidebar-link">Home</a>
+      <a href="/about"   class="pub-sidebar-link">About</a>
+      <a href="/privacy" class="pub-sidebar-link">Privacy</a>
+      <a href="/contact" class="pub-sidebar-link">Contact</a>
+    </nav>
+    <div class="pub-sidebar-divider"></div>
+    <div class="pub-sidebar-footer">
+      <span class="pub-sidebar-label">Dark Mode</span>
+      <label class="toggle-switch" aria-label="Toggle dark mode">
+        <input type="checkbox" id="theme-switch">
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+      </label>
+    </div>
+  </div>
+  <div class="pub-sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- ── HERO ── -->
+  <div class="home-wrapper">
+
+    <!-- LEFT: copy + CTA -->
+    <div class="home-left">
+
+      <p class="home-eyebrow" id="g-eyebrow">A minimalist blogging platform</p>
+
+      <h1 class="home-title" id="g-title">
+        <span class="tl"><span class="tw" id="tw0">Read.</span></span>
+        <span class="tl"><em class="tw" id="tw1">Write.</em></span>
+        <span class="tl"><span class="tw" id="tw2">Connect.</span></span>
+      </h1>
+
+      <p class="home-sub" id="g-sub">
+        A quiet space for stories to be written, discovered, and appreciated.
+      </p>
+
+      <div class="home-actions" id="g-actions">
+        <a href="#" class="btn btn-accent btn-lg" id="get-started-btn">Create Account</a>
+        <a href="#" class="btn btn-outline btn-lg" id="hero-login-btn">Log In</a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: floating mock cards — same blog-card markup as the feed -->
+    <div class="home-right">
+      <div class="hr-glow" id="g-glow"></div>
+
+      <div class="mock-stack">
+
+        <!-- Card 0 — @tonton -->
+        <div class="blog-card mock-card" id="mc0">
+          <div class="blog-card-link">
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <div class="blog-card-avatar" style="background: var(--accent);">
+                  <span class="blog-card-avatar-initials">T</span>
+                </div>
+                <span class="blog-card-author">@tonton</span>
+                <span class="blog-card-time">2 min ago</span>
+              </div>
+              <h2 class="blog-card-title">48 Hours in Kyoto: A Minimalist's Guide</h2>
+              <p class="blog-card-excerpt">The temples close at five, but the city never really sleeps. I arrived in November when the maples were turning…</p>
+            </div>
+          </div>
+          <div class="blog-card-actions">
+            <div class="blog-card-actions-left">
+              <span class="action-pill liked">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span>124</span>
+              </span>
+              <span class="action-pill starred">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span>38</span>
+              </span>
+            </div>
+            <div class="blog-card-actions-right">
+              <span class="action-pill comment-pill has-comments">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>12</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 1 — @mchlpdmnt -->
+        <div class="blog-card mock-card" id="mc1">
+          <div class="blog-card-link">
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <div class="blog-card-avatar" style="background: oklch(50% 0.09 165);">
+                  <span class="blog-card-avatar-initials">M</span>
+                </div>
+                <span class="blog-card-author">@mchlpdmnt</span>
+                <span class="blog-card-time">1 hr ago</span>
+              </div>
+              <h2 class="blog-card-title">On Writing Every Day for 365 Days</h2>
+              <p class="blog-card-excerpt">It started as a challenge. On day 300, it became something else entirely…</p>
+            </div>
+          </div>
+          <div class="blog-card-actions">
+            <div class="blog-card-actions-left">
+              <span class="action-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span>87</span>
+              </span>
+              <span class="action-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>21</span>
+              </span>
+            </div>
+            <div class="blog-card-actions-right">
+              <span class="action-pill comment-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>5</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 — @alex_writes -->
+        <div class="blog-card mock-card" id="mc2">
+          <div class="blog-card-link">
+            <div class="blog-card-body">
+              <div class="blog-card-meta">
+                <div class="blog-card-avatar" style="background: oklch(46% 0.07 220);">
+                  <span class="blog-card-avatar-initials">A</span>
+                </div>
+                <span class="blog-card-author">@alex_writes</span>
+                <span class="blog-card-time">3 hr ago</span>
+              </div>
+              <h2 class="blog-card-title">Why I Switched Back to Physical Books</h2>
+              <p class="blog-card-excerpt">The glow of a screen is fine for code. But for stories, give me paper every time…</p>
+            </div>
+          </div>
+          <div class="blog-card-actions">
+            <div class="blog-card-actions-left">
+              <span class="action-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <span>56</span>
+              </span>
+              <span class="action-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <span>14</span>
+              </span>
+            </div>
+            <div class="blog-card-actions-right">
+              <span class="action-pill comment-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                <span>8</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.mock-stack -->
+    </div><!-- /.home-right -->
+
+  </div><!-- /.home-wrapper -->
+
+
+  <!-- ── AUTH MODAL ── -->
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="auth-modal-close">&times;</button>
+      <div id="auth-form-container">
+
+        <!-- Login -->
+        <div id="login-form" class="auth-form">
+          <h2>Welcome back</h2>
+          <p class="auth-subtitle">Log in to your account</p>
+          <form id="login-form-element">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" required>
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="login-password" required>
+                <button type="button" class="password-toggle" id="login-pw-toggle" aria-label="Show password">
+                  <svg class="pw-eye-show" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="pw-eye-hide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                </button>
+              </div>
+            </div>
+            <div id="login-error" class="form-error hidden"></div>
+            <button type="submit" class="btn btn-primary btn-full">Log In</button>
+          </form>
+          <div class="auth-divider"><span>or</span></div>
+          <button type="button" class="btn btn-outline btn-full" id="login-google-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.15-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.36c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.34H2.18C1.43 8.78 1 10.34 1 12.27c0 1.93.43 3.49 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.9c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.34l3.66 2.84c.86-2.6 3.29-4.28 6.15-4.28z" fill="#EA4335"/></svg>
+            Continue with Google
+          </button>
+          <p class="auth-switch">No account? <a href="#" id="show-signup">Sign up</a></p>
+        </div>
+
+        <!-- Sign Up -->
+        <div id="signup-form" class="auth-form hidden">
+          <h2>Create account</h2>
+          <p class="auth-subtitle">Start writing today</p>
+          <form id="signup-form-element">
+            <div class="form-group">
+              <label for="signup-username">Username</label>
+              <input type="text" id="signup-username" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9_]+">
+              <small>Letters, numbers, and underscores only</small>
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="signup-password" required minlength="6">
+                <button type="button" class="password-toggle" id="signup-pw-toggle" aria-label="Show password">
+                  <svg class="pw-eye-show" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="pw-eye-hide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                </button>
+              </div>
+            </div>
+            <div id="signup-error" class="form-error hidden"></div>
+            <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+          </form>
+          <div class="auth-divider"><span>or</span></div>
+          <button type="button" class="btn btn-outline btn-full" id="signup-google-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.15-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.36c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.34H2.18C1.43 8.78 1 10.34 1 12.27c0 1.93.43 3.49 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.9c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.34l3.66 2.84c.86-2.6 3.29-4.28 6.15-4.28z" fill="#EA4335"/></svg>
+            Continue with Google
+          </button>
+          <p class="auth-switch">Already have an account? <a href="#" id="show-login">Log in</a></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── SCRIPTS ── -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <!-- anime.js v3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ─────────────────────────────────────────────────────────
+       HOME PAGE — anime.js animation suite
+       Entry sequence → ambient float → interactive polish
+    ───────────────────────────────────────────────────────── */
+
+    var navH = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--nav-h')
+    ) || 62;
+
+    /* ── 1. Nav slide down ── */
+    anime({
+      targets: '#g-nav',
+      translateY: [-navH, 0],
+      opacity:    [0, 1],
+      duration:   900,
+      easing:     'easeOutQuart'
+    });
+
+    /* ── 2. Eyebrow ── */
+    anime({
+      targets:  '#g-eyebrow',
+      opacity:  [0, 1],
+      translateY: [18, 0],
+      duration: 850,
+      easing:   'easeOutQuart',
+      delay:    150
+    });
+
+    /* ── 3. Title words — clip-rise per line ── */
+    anime.set(['#tw0', '#tw1', '#tw2'], { translateY: '105%', opacity: 0, rotate: 3 });
+    anime({
+      targets:    ['#tw0', '#tw1', '#tw2'],
+      translateY: ['105%', '0%'],
+      opacity:    [0, 1],
+      rotate:     [3, 0],
+      duration:   950,
+      easing:     'easeOutQuart',
+      delay:      anime.stagger(130, { start: 280 })
+    });
+
+    /* ── 4. Sub + actions ── */
+    anime({
+      targets:    '#g-sub',
+      opacity:    [0, 1],
+      translateY: [22, 0],
+      duration:   850,
+      easing:     'easeOutQuart',
+      delay:      720
+    });
+    anime({
+      targets:    '#g-actions',
+      opacity:    [0, 1],
+      translateY: [22, 0],
+      duration:   850,
+      easing:     'easeOutQuart',
+      delay:      880
+    });
+
+    /* ── 5. Mock cards — stagger entry, then start float loops ── */
+    anime({
+      targets:    ['#mc0', '#mc1', '#mc2'],
+      opacity:    [0, 1],
+      translateY: [50, 0],
+      duration:   1000,
+      easing:     'easeOutQuart',
+      delay:      anime.stagger(150, { start: 600 }),
+      complete:   startFloats
+    });
+
+    /* ── 6. Ambient float — three independent sine orbits ──
+          Each card gets a unique trajectory, duration, and phase
+          so they never align. Pure CSS-compositable transforms only.
+    ── */
+    function startFloats() {
+      /* mc0: gentle vertical float, slow */
+      anime({
+        targets:   '#mc0',
+        translateY: [0, -13],
+        duration:  3400,
+        easing:    'easeInOutSine',
+        direction: 'alternate',
+        loop:      true
+      });
+
+      /* mc1: horizontal + slight vertical, medium speed, opposite phase */
+      anime({
+        targets:    '#mc1',
+        translateY: [0, 10],
+        translateX: [0, -7],
+        duration:   4200,
+        easing:     'easeInOutSine',
+        direction:  'alternate',
+        loop:       true
+      });
+
+      /* mc2: diagonal float at a different speed */
+      anime({
+        targets:    '#mc2',
+        translateY: [0, -9],
+        translateX: [0, 6],
+        duration:   3800,
+        easing:     'easeInOutSine',
+        direction:  'alternate',
+        loop:       true
+      });
+    }
+
+    /* ── 7. Glow ambient pulse ── */
+    anime({
+      targets:   '#g-glow',
+      scale:     [1, 1.22],
+      opacity:   [0.4, 0.58],
+      duration:  4500,
+      easing:    'easeInOutSine',
+      direction: 'alternate',
+      loop:      true
+    });
+
+    /* ── 8. Magnetic CTA buttons ──
+          mousemove uses direct style for zero-lag response;
+          mouseleave snaps back with anime for a smooth return.
+    ── */
+    document.querySelectorAll('#g-actions .btn').forEach(function (btn) {
+      var snapBack = null;
+
+      btn.addEventListener('mousemove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left  - r.width  / 2) * 0.28;
+        var y = (e.clientY - r.top   - r.height / 2) * 0.28;
+        if (snapBack) { snapBack.pause(); snapBack = null; }
+        btn.style.transform = 'translateX(' + x + 'px) translateY(' + y + 'px)';
+      });
+
+      btn.addEventListener('mouseleave', function () {
+        snapBack = anime({
+          targets:    btn,
+          translateX: 0,
+          translateY: 0,
+          duration:   750,
+          easing:     'easeOutQuart'
+        });
+      });
+
+      btn.addEventListener('mousedown', function () {
+        anime({ targets: btn, scale: 0.96, duration: 100, easing: 'linear' });
+      });
+      btn.addEventListener('mouseup', function () {
+        anime({ targets: btn, scale: 1, duration: 350, easing: 'easeOutQuart' });
+      });
+    });
+
+    /* ── 9. Nav link hover tint ── */
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('mouseenter', function () {
+        anime({ targets: link, color: 'var(--fg)',    duration: 200, easing: 'linear' });
+      });
+      link.addEventListener('mouseleave', function () {
+        if (!link.classList.contains('active')) {
+          anime({ targets: link, color: 'var(--muted)', duration: 250, easing: 'linear' });
+        }
+      });
+    });
+
+    /* ─────────────────────────────────────────────────────────
+       MODAL — open / close with anime.js
+    ───────────────────────────────────────────────────────── */
+    var modal      = document.getElementById('auth-modal');
+    var loginForm  = document.getElementById('login-form');
+    var signupForm = document.getElementById('signup-form');
+
+    function isMobile() { return window.innerWidth <= 540; }
+
+    function openModal(view) {
+      modal.classList.remove('hidden');
+      if (view === 'signup') {
+        loginForm.classList.add('hidden');
+        signupForm.classList.remove('hidden');
+      } else {
+        signupForm.classList.add('hidden');
+        loginForm.classList.remove('hidden');
+      }
+
+      if (isMobile()) {
+        // Mobile: bottom-sheet slides up from below the viewport
+        anime.set('.modal-content', { translateY: '100%', opacity: 1, scale: 1 });
+        anime({
+          targets:    '.modal-content',
+          translateY: ['100%', '0%'],
+          duration:   420,
+          easing:     'easeOutQuart'
+        });
+      } else {
+        // Desktop: subtle drop + scale from center
+        anime.set('.modal-content', { translateY: -18, opacity: 0, scale: 0.97 });
+        anime({
+          targets:    '.modal-content',
+          opacity:    [0, 1],
+          translateY: [-18, 0],
+          scale:      [0.97, 1],
+          duration:   350,
+          easing:     'easeOutCubic'
+        });
+      }
+    }
+
+    function closeModal() {
+      if (isMobile()) {
+        anime({
+          targets:    '.modal-content',
+          translateY: ['0%', '100%'],
+          duration:   320,
+          easing:     'easeInQuart',
+          complete:   function () {
+            modal.classList.add('hidden');
+            anime.set('.modal-content', { translateY: 0 });
+          }
+        });
+      } else {
+        anime({
+          targets:    '.modal-content',
+          opacity:    [1, 0],
+          translateY: [0, -10],
+          scale:      [1, 0.97],
+          duration:   220,
+          easing:     'easeInCubic',
+          complete:   function () { modal.classList.add('hidden'); }
+        });
+      }
+    }
+
+    document.getElementById('get-started-btn').addEventListener('click',  function (e) { e.preventDefault(); openModal('signup'); });
+    document.getElementById('hero-login-btn').addEventListener('click',   function (e) { e.preventDefault(); openModal('login');  });
+    document.getElementById('auth-modal-close').addEventListener('click', closeModal);
+    document.querySelector('.modal-overlay').addEventListener('click',    closeModal);
+    document.getElementById('show-signup').addEventListener('click', function (e) { e.preventDefault(); openModal('signup'); });
+    document.getElementById('show-login').addEventListener('click',  function (e) { e.preventDefault(); openModal('login');  });
+
+  })();
+  </script>
+
+  <script src="/scripts/supabaseClient.js"></script>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/transitions.js"></script>
+  <script src="/public/home/home.js"></script>
+
+</body>
+</html>

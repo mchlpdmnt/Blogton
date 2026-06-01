@@ -1,0 +1,262 @@
+/* =========================================================
+   HOME.CSS — Blogton landing page
+   Split-screen editorial layout. anime.js handles all entry
+   animations; initial states (opacity:0) set here.
+   ========================================================= */
+
+html, body.page-home {
+  overflow-y: auto;
+  height: auto;
+}
+
+/* ── WRAPPER ── */
+.home-wrapper {
+  position: relative;
+  margin-top: var(--nav-h);
+  min-height: calc(100dvh - var(--nav-h));
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+}
+
+/* ──────────────────────────────────────────────
+   LEFT PANEL
+────────────────────────────────────────────── */
+.home-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem clamp(2.5rem, 4.5vw, 4.5rem) 4rem clamp(2.5rem, 7vw, 8rem);
+  border-right: 1px solid var(--border);
+  min-height: calc(100dvh - var(--nav-h));
+  position: relative;
+  z-index: 2;
+}
+
+/* Eyebrow */
+.home-eyebrow {
+  font-family: var(--sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+
+  /* anime.js entry state */
+  opacity: 0;
+  transform: translateY(18px);
+}
+.home-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Title */
+.home-title {
+  font-family: var(--serif);
+  font-size: clamp(4rem, 7vw, 6.75rem);
+  font-weight: 500;
+  line-height: 0.91;
+  letter-spacing: -0.04em;
+  color: var(--fg);
+  margin-bottom: 2.125rem;
+}
+
+/* Each line is a clip container for anime.js word reveal */
+.home-title .tl {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.08em; /* descender room */
+}
+.home-title .tw {
+  display: inline-block;
+  /* anime.js entry: set via anime.set() in script */
+}
+.home-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+/* Sub */
+.home-sub {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  color: var(--muted);
+  line-height: 1.78;
+  max-width: 44ch;
+  margin-bottom: 2.625rem;
+
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+/* CTAs */
+.home-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 3.625rem;
+
+  opacity: 0;
+  transform: translateY(22px);
+}
+
+/* Stats */
+.home-stats {
+  display: flex;
+  gap: 3.25rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--border);
+
+  opacity: 0;
+  transform: translateY(22px);
+}
+.home-stat-num {
+  font-family: var(--serif);
+  font-size: 1.875rem;
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--fg);
+}
+.home-stat-label {
+  font-family: var(--sans);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.3rem;
+}
+
+/* ──────────────────────────────────────────────
+   RIGHT PANEL
+────────────────────────────────────────────── */
+.home-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--surface);
+  min-height: calc(100dvh - var(--nav-h));
+}
+
+/* Dot grid */
+.home-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* Ambient glow */
+.hr-glow {
+  position: absolute;
+  width: 440px;
+  height: 440px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 68%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────────
+   MOCK CARD STACK
+   Uses the canonical .blog-card component so the
+   preview matches the live in-app feed exactly.
+────────────────────────────────────────────── */
+.mock-stack {
+  position: relative;
+  z-index: 2;
+  width: 310px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* anime.js entry state — animated in from translateY(50px) */
+.mock-stack .blog-card {
+  opacity: 0;
+  transform: translateY(50px);
+  pointer-events: none; /* decorative only */
+}
+
+/* Editorial stagger offsets matching original aesthetic */
+.mock-stack .blog-card:nth-child(2) { margin-left: 1.25rem; }
+.mock-stack .blog-card:nth-child(3) { margin-left: 0.625rem; margin-right: 0.625rem; }
+
+/* Slightly cooler shadow for the right-panel dark surface context */
+.mock-stack .blog-card {
+  box-shadow:
+    0 2px 12px oklch(0% 0 0 / 0.06),
+    0 8px 32px oklch(0% 0 0 / 0.05);
+}
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .home-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .home-left {
+    min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 3.5rem 2rem 3rem;
+  }
+  .home-right {
+    min-height: 460px;
+  }
+}
+
+/* Mobile: hide the card panel — no GPU waste on small screens */
+@media (max-width: 768px) {
+  .home-wrapper {
+    grid-template-columns: 1fr;
+    min-height: calc(100dvh - var(--nav-h));
+  }
+
+  .home-right {
+    display: none;
+  }
+
+  .home-left {
+    min-height: calc(100dvh - var(--nav-h));
+    border-bottom: none;
+    padding: 3rem 1.75rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .home-stats {
+    padding-top: 1.75rem;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .home-title   { font-size: clamp(3.25rem, 15vw, 4.25rem); }
+  .home-sub     { max-width: 100%; }
+  .home-actions { flex-direction: column; }
+  .home-actions .btn-lg {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+  .home-stats { gap: 2rem; }
+}

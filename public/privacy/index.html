@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('tob-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy — Blogton</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/public/privacy/privacy.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png"     href="/assets/favicon.png">
+</head>
+
+<body class="page-privacy">
+
+<!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">Blogton.</a>
+      <div class="nav-right">
+        <a href="/"    class="nav-link">Home</a>
+        <a href="/about"   class="nav-link">About</a>
+        <a href="/privacy" class="nav-link active">Privacy</a>
+        <a href="/contact" class="nav-link">Contact</a>
+        <button class="btn-hamburger pub-burger" id="sidebar-open" aria-label="Open menu" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="pub-sidebar" id="sidebar" aria-hidden="true">
+    <div class="pub-sidebar-header">
+      <span class="pub-sidebar-logo">Menu</span>
+      <button class="pub-sidebar-close" id="sidebar-close" aria-label="Close menu" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="pub-sidebar-nav">
+      <a href="/"    class="pub-sidebar-link">Home</a>
+      <a href="/about"   class="pub-sidebar-link">About</a>
+      <a href="/privacy" class="pub-sidebar-link active">Privacy</a>
+      <a href="/contact" class="pub-sidebar-link">Contact</a>
+    </nav>
+    <div class="pub-sidebar-divider"></div>
+    <div class="pub-sidebar-footer">
+      <span class="pub-sidebar-label">Dark Mode</span>
+      <label class="toggle-switch" aria-label="Toggle dark mode">
+        <input type="checkbox" id="theme-switch">
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+      </label>
+    </div>
+  </div>
+  <div class="pub-sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- ── MAIN LAYOUT ── -->
+  <div class="privacy-layout">
+
+    <!-- TOC Sidebar -->
+    <aside class="privacy-toc">
+      <p class="toc-label">On this page</p>
+      <ul class="toc-list" id="toc-list">
+        <li class="toc-item"><a href="#overview">Overview</a></li>
+        <li class="toc-item"><a href="#data-collected">Data We Collect</a></li>
+        <li class="toc-item"><a href="#auth">Authentication</a></li>
+        <li class="toc-item"><a href="#public-content">Public Content</a></li>
+        <li class="toc-item"><a href="#third-party">Third-Party Services</a></li>
+        <li class="toc-item"><a href="#no-tracking">What We Don't Do</a></li>
+        <li class="toc-item"><a href="#your-rights">Your Rights</a></li>
+      </ul>
+    </aside>
+
+    <!-- Content -->
+    <main class="privacy-content">
+
+      <header class="privacy-header">
+        <p class="priv-eyebrow">Privacy Policy</p>
+        <h1 class="privacy-title">How Blogton handles your data</h1>
+        <p class="privacy-meta">Last updated: May 2026 &middot; Version 1.0</p>
+      </header>
+
+      <!-- Startup notice -->
+      <div class="startup-notice">
+        <svg class="startup-notice-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>Blogton is an early-stage startup project. This policy reflects what is <strong>actually implemented</strong> in the current version (1.0) — nothing is assumed or pre-emptive.</p>
+      </div>
+
+      <!-- Section 1: Overview -->
+      <section class="priv-section" id="overview">
+        <h2 class="priv-section-title">Overview</h2>
+        <p>Blogton is a minimalist blogging platform. We collect only the data that is functionally necessary to run the service. We do not sell your data. We do not run ads. This policy describes exactly what data exists in the system today.</p>
+        <p>Authentication and database services are provided by <strong>Supabase</strong>, a third-party backend platform. Your data lives in Supabase's infrastructure.</p>
+      </section>
+
+      <!-- Section 2: Data collected -->
+      <section class="priv-section" id="data-collected">
+        <h2 class="priv-section-title">Data We Collect</h2>
+        <p>The following table covers every type of data currently stored by Blogton:</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Why it's stored</th>
+              <th>Visibility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Email address</strong></td>
+              <td class="muted">Required for account creation and login</td>
+              <td><span class="priv-badge gray">Private</span></td>
+            </tr>
+            <tr>
+              <td><strong>Username</strong></td>
+              <td class="muted">Chosen at signup; identifies your profile and posts</td>
+              <td><span class="priv-badge green">Public</span></td>
+            </tr>
+            <tr>
+              <td><strong>Blog posts</strong><br><small style="color:var(--muted);font-size:0.75rem;">title, content, cover image</small></td>
+              <td class="muted">Published posts appear in the public feed</td>
+              <td><span class="priv-badge green">Public</span></td>
+            </tr>
+            <tr>
+              <td><strong>Liked posts</strong></td>
+              <td class="muted">Records which posts you have liked; like counts are public</td>
+              <td><span class="priv-badge gray">Count is public</span></td>
+            </tr>
+            <tr>
+              <td><strong>Starred posts</strong></td>
+              <td class="muted">Your personal reading list, shown on your profile tab</td>
+              <td><span class="priv-badge green">Public on profile</span></td>
+            </tr>
+            <tr>
+              <td><strong>Join date</strong></td>
+              <td class="muted">Displayed on your public profile page</td>
+              <td><span class="priv-badge green">Public</span></td>
+            </tr>
+            <tr>
+              <td><strong>Google account info</strong><br><small style="color:var(--muted);font-size:0.75rem;">if using Google sign-in</small></td>
+              <td class="muted">Name and email provided by Google OAuth; used only for auth</td>
+              <td><span class="priv-badge gray">Private</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Section 3: Auth -->
+      <section class="priv-section" id="auth">
+        <h2 class="priv-section-title">Authentication</h2>
+        <p>Blogton supports two sign-in methods:</p>
+        <p><strong>Email &amp; password</strong> — Your password is never stored in plaintext. It is hashed and managed entirely by Supabase Auth.</p>
+        <p><strong>Google OAuth</strong> — If you choose "Continue with Google," your Google account name and email are passed to Supabase to create or identify your account. No other Google account data is accessed.</p>
+        <p>Authentication sessions are maintained via tokens managed by Supabase. Clearing your browser storage or signing out will end your session.</p>
+      </section>
+
+      <!-- Section 4: Public content -->
+      <section class="priv-section" id="public-content">
+        <h2 class="priv-section-title">Public Content</h2>
+        <p>Everything you publish on Blogton — your username, blog posts, and starred reading list — is <strong>publicly visible</strong> to anyone who visits the platform, including users who are not signed in.</p>
+        <p>Do not publish content you want to keep private. There is currently no draft or private post feature.</p>
+      </section>
+
+      <!-- Section 5: Third-party -->
+      <section class="priv-section" id="third-party">
+        <h2 class="priv-section-title">Third-Party Services</h2>
+        <p><strong>Supabase</strong> — All data (user accounts, posts, likes, stars) is stored in a Supabase project (PostgreSQL database). Supabase's own privacy policy governs how they handle the infrastructure. See <a href="https://supabase.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">supabase.com/privacy</a>.</p>
+        <p><strong>Fonts</strong> — The EB Garamond typeface is loaded from Google Fonts CDN. This may result in your IP address being logged by Google as part of a standard CDN request. No account data is shared.</p>
+        <p>No other third-party services, analytics providers, or advertising networks are currently integrated into Blogton.</p>
+      </section>
+
+      <!-- Section 6: What we don't do -->
+      <section class="priv-section" id="no-tracking">
+        <h2 class="priv-section-title">What We Don't Do</h2>
+        <p>As of version 1.0, Blogton does <strong>not</strong>:</p>
+        <table class="data-table">
+          <tbody>
+            <tr><td>Run ads or sponsored content</td></tr>
+            <tr><td>Sell or share user data with third parties</td></tr>
+            <tr><td>Use tracking pixels or behavioral analytics</td></tr>
+            <tr><td>Build advertising profiles from your activity</td></tr>
+            <tr><td>Send marketing emails</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1rem;">This section reflects only the current state of the project. Future features will be disclosed in updated versions of this policy.</p>
+      </section>
+
+      <!-- Section 7: Your rights -->
+      <section class="priv-section" id="your-rights">
+        <h2 class="priv-section-title">Your Rights</h2>
+        <p><strong>Delete your posts</strong> — You can delete any post you've written from within the app.</p>
+        <p><strong>Account deletion</strong> — You can delete your account directly from the app through the Settings page. This will permanently remove your account and all associated data.</p>
+        <p><strong>Data questions</strong> — For any questions about what data is stored for your account, reach out through the <a href="/contact" style="color:var(--accent);">Contact page</a>. This is an early-stage project and the creator will respond personally.</p>
+      </section>
+
+      <footer class="privacy-footer">
+        &copy; 2026 Blogton &middot; Michael Pedemonte
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- ── AUTH MODAL ── -->
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="auth-modal-close">&times;</button>
+      <div id="auth-form-container">
+        <div id="login-form" class="auth-form">
+          <h2>Welcome Back</h2>
+          <p class="auth-subtitle">Log in to your account</p>
+          <form id="login-form-element">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" required>
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="login-password" required>
+                <button type="button" class="password-toggle" id="login-pw-toggle" aria-label="Show password">
+                  <svg class="pw-eye-show" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="pw-eye-hide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                </button>
+              </div>
+            </div>
+            <div id="login-error" class="form-error hidden"></div>
+            <button type="submit" class="btn btn-primary btn-full">Log In</button>
+          </form>
+          <div class="auth-divider"><span>or</span></div>
+          <button type="button" class="btn btn-outline btn-full" id="login-google-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.15-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.36c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.34H2.18C1.43 8.78 1 10.34 1 12.27c0 1.93.43 3.49 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.9c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.34l3.66 2.84c.86-2.6 3.29-4.28 6.15-4.28z" fill="#EA4335"/></svg>
+            Continue with Google
+          </button>
+          <p class="auth-switch">Don't have an account? <a href="#" id="show-signup">Sign up</a></p>
+        </div>
+        <div id="signup-form" class="auth-form hidden">
+          <h2>Create Account</h2>
+          <p class="auth-subtitle">Start writing blog today</p>
+          <form id="signup-form-element">
+            <div class="form-group">
+              <label for="signup-username">Username</label>
+              <input type="text" id="signup-username" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9_]+">
+              <small>Letters, numbers, and underscores only</small>
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="signup-password" required minlength="6">
+                <button type="button" class="password-toggle" id="signup-pw-toggle" aria-label="Show password">
+                  <svg class="pw-eye-show" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="pw-eye-hide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                </button>
+              </div>
+            </div>
+            <div id="signup-error" class="form-error hidden"></div>
+            <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+          </form>
+          <div class="auth-divider"><span>or</span></div>
+          <button type="button" class="btn btn-outline btn-full" id="signup-google-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.15-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.36c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.34H2.18C1.43 8.78 1 10.34 1 12.27c0 1.93.43 3.49 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.9c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.34l3.66 2.84c.86-2.6 3.29-4.28 6.15-4.28z" fill="#EA4335"/></svg>
+            Continue with Google
+          </button>
+          <p class="auth-switch">Already have an account? <a href="#" id="show-login">Log in</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/scripts/supabaseClient.js"></script>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/transitions.js"></script>
+  <script src="/scripts/public-shell.js"></script>
+  <script src="/public/privacy/privacy.js"></script>
+</body>
+</html>

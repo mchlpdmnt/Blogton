@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('tob-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed — Blogton</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/app/feed/feed.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png"     href="/assets/favicon.png">
+</head>
+
+<body class="page-feed">
+
+<div class="toast-container" id="toast-container"></div>
+
+  <main class="feed-page-root" id="feed-page">
+
+    <div class="feed-hero">
+      <h1 class="feed-hero-title" id="feed-greeting"></h1>
+      <p class="feed-hero-sub">See what’s new.</p>
+    </div>
+
+    <div class="feed-masonry" id="feed-posts"></div>
+
+    <div id="feed-loader" class="feed-loader-state" style="display:none;">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div id="feed-empty" class="empty-state" style="display:none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <p>No posts yet. Be the first to <span style="color:var(--accent);">write something</span>.</p>
+    </div>
+
+    <div class="feed-scroll-hint" id="feed-scroll-hint">
+      <span>Scroll for more posts :)</span>
+      <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 16l-6-6h12z"/></svg>
+    </div>
+
+    <div id="feed-sentinel"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.2/lib/anime.min.js"></script>
+  <script src="/scripts/supabaseClient.js"></script>
+  <script src="/scripts/transitions.js"></script>
+  <script src="/scripts/utils.js"></script>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/userProfile.js"></script>
+  <script src="/scripts/modules/interactions.js"></script>
+  <script src="/scripts/modules/blogCard.js"></script>
+  <script src="/scripts/modules/profileStore.js"></script>
+  <script src="/scripts/modules/composeModal.js"></script>
+  <script src="/scripts/modules/navSearch.js"></script>
+  <script src="/scripts/components/nav.js"></script>
+  <script src="/app/feed/feed.js"></script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){var t=localStorage.getItem('tob-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);}());</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Blogton</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/public/about/about.css">
+  <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+  <link rel="icon" type="image/png"     href="/assets/favicon.png">
+</head>
+
+<body class="page-about">
+
+<!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">Blogton.</a>
+      <div class="nav-right">
+        <a href="/"        class="nav-link">Home</a>
+        <a href="/about"   class="nav-link active">About</a>
+        <a href="/privacy" class="nav-link">Privacy</a>
+        <a href="/contact" class="nav-link">Contact</a>
+        <button class="btn-hamburger pub-burger" id="sidebar-open" aria-label="Open menu" type="button">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="pub-sidebar" id="sidebar" aria-hidden="true">
+    <div class="pub-sidebar-header">
+      <span class="pub-sidebar-logo">Menu</span>
+      <button class="pub-sidebar-close" id="sidebar-close" aria-label="Close menu" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <nav class="pub-sidebar-nav">
+      <a href="/"        class="pub-sidebar-link">Home</a>
+      <a href="/about"   class="pub-sidebar-link active">About</a>
+      <a href="/privacy" class="pub-sidebar-link">Privacy</a>
+      <a href="/contact" class="pub-sidebar-link">Contact</a>
+    </nav>
+    <div class="pub-sidebar-divider"></div>
+    <div class="pub-sidebar-footer">
+      <span class="pub-sidebar-label">Dark Mode</span>
+      <label class="toggle-switch" aria-label="Toggle dark mode">
+        <input type="checkbox" id="theme-switch">
+        <span class="toggle-track"><span class="toggle-thumb"></span></span>
+      </label>
+    </div>
+  </div>
+  <div class="pub-sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       HERO — Full viewport, typewriter manifesto
+       ═══════════════════════════════════════════ -->
+  <section class="ab-hero" id="ab-hero">
+    <div class="ab-hero-inner">
+      <div class="ab-hero-meta">
+        <span class="ab-tag">&copy; 2026</span>
+        <span class="ab-tag-sep">·</span>
+        <span class="ab-tag">Built for writers</span>
+      </div>
+      <h1 class="ab-hero-title" id="ab-hero-title">
+        <span class="ab-line ab-line-1">The internet</span>
+        <span class="ab-line ab-line-2">has enough <em>noise.</em></span>
+        <span class="ab-line ab-line-3">Blogton is</span>
+        <span class="ab-line ab-line-4">the <em>signal.</em></span>
+      </h1>
+      <p class="ab-hero-sub" id="ab-hero-sub">
+        A writing platform with one rule: the writing comes first.
+      </p>
+    </div>
+    <div class="ab-hero-scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <svg width="14" height="24" viewBox="0 0 14 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="12" height="18" rx="6" stroke="currentColor" stroke-width="1.5"/>
+        <circle class="ab-scroll-dot" cx="7" cy="6" r="2" fill="currentColor"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PRINCIPLES — three editorial columns
+       ═══════════════════════════════════════════ -->
+  <section class="ab-principles" id="ab-principles">
+    <div class="ab-principles-header" data-reveal>
+      <span class="ab-eyebrow">What we believe</span>
+    </div>
+    <div class="ab-principles-grid">
+      <article class="ab-principle" data-reveal data-delay="0">
+        <span class="ab-principle-num">01</span>
+        <h3 class="ab-principle-title">Writing over<br>metrics.</h3>
+        <p class="ab-principle-body">
+          No follower counts in your face. No algorithmic feeds pushing what's
+          trending. The only number that matters is zero — as in zero distractions
+          between you and the page.
+        </p>
+      </article>
+      <article class="ab-principle" data-reveal data-delay="100">
+        <span class="ab-principle-num">02</span>
+        <h3 class="ab-principle-title">Readers over<br>impressions.</h3>
+        <p class="ab-principle-body">
+          We don't sell eyeballs to advertisers. We build a place where readers
+          actually read — because they chose to be here, not because they were
+          algorithmically nudged.
+        </p>
+      </article>
+      <article class="ab-principle" data-reveal data-delay="200">
+        <span class="ab-principle-num">03</span>
+        <h3 class="ab-principle-title">Craft over<br>velocity.</h3>
+        <p class="ab-principle-body">
+          There's no publish button pressure here. Write slowly. Edit ruthlessly.
+          Publish when it's ready. The platform will wait — forever, if that's
+          what it takes.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PULL QUOTE — full-bleed typographic moment
+       ═══════════════════════════════════════════ -->
+  <section class="ab-pullquote" id="ab-pullquote">
+    <div class="ab-pullquote-inner" data-reveal>
+      <blockquote class="ab-bq">
+        <p>"Good writing doesn&rsquo;t need an algorithm to find its audience.&nbsp; It&nbsp;needs&nbsp;a&nbsp;home."</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       CREATOR — asymmetric split
+       ═══════════════════════════════════════════ -->
+  <section class="ab-creator" id="ab-creator">
+    <div class="ab-creator-label" data-reveal>
+      <span class="ab-eyebrow">The person behind it</span>
+    </div>
+
+    <div class="ab-creator-body">
+      <div class="ab-creator-name-block" data-reveal>
+        <h2 class="ab-creator-name">Michael<br>Pedemonte</h2>
+        <a href="https://mchlpdmnt.netlify.app" class="ab-creator-url" target="_blank" rel="noopener">mchlpdmnt ↗</a>
+      </div>
+
+      <div class="ab-creator-content" data-reveal>
+        <p class="ab-creator-intro">
+          Developer and writer. Built Blogton in 2026 because every other
+          platform was optimising for the wrong thing.
+        </p>
+        <p class="ab-creator-detail">
+          The core idea is embarrassingly simple: a place where writing
+          is the product, not the bait. No ads, no dark patterns, no growth
+          hacking. Just a clean editor, a reader-first feed, and the belief
+          that good sentences still matter.
+        </p>
+        <p class="ab-creator-detail">
+          Blogton is in active development. Every feature is weighed against one
+          question — <em>does this make the writing better?</em> If the answer
+          is no, it doesn't ship.
+        </p>
+        <div class="ab-creator-cta" id="ab-creator-cta">
+          <a href="/" class="btn btn-accent btn-lg" id="about-signup-btn">Start writing</a>
+          <a href="/contact" class="btn btn-outline btn-lg">Say hello</a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="ab-creator-foot">
+      <span class="ab-creator-copy">&copy; 2026 Blogton &middot; Michael Pedemonte</span>
+      <nav class="ab-foot-nav">
+        <a href="/privacy">Privacy</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </footer>
+  </section>
+
+  <!-- AUTH MODAL -->
+  <div id="auth-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="auth-modal-close">&times;</button>
+      <div id="auth-form-container">
+        <div id="login-form" class="auth-form">
+          <h2>Welcome Back</h2>
+          <p class="auth-subtitle">Log in to your account</p>
+          <form id="login-form-element">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" required>
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="login-password" required>
+                <button type="button" class="password-toggle" id="login-pw-toggle" aria-label="Show password">
+                  <svg class="pw-eye-show" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="pw-eye-hide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                </button>
+              </div>
+            </div>
+            <div id="login-error" class="form-error hidden"></div>
+            <button type="submit" class="btn btn-primary btn-full">Log In</button>
+          </form>
+          <div class="auth-divider"><span>or</span></div>
+          <button type="button" class="btn btn-outline btn-full" id="login-google-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.15-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.36c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.34H2.18C1.43 8.78 1 10.34 1 12.27c0 1.93.43 3.49 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.9c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.34l3.66 2.84c.86-2.6 3.29-4.28 6.15-4.28z" fill="#EA4335"/></svg>
+            Continue with Google
+          </button>
+          <p class="auth-switch">Don&rsquo;t have an account? <a href="#" id="show-signup">Sign up</a></p>
+        </div>
+        <div id="signup-form" class="auth-form hidden">
+          <h2>Create Account</h2>
+          <p class="auth-subtitle">Start writing today</p>
+          <form id="signup-form-element">
+            <div class="form-group">
+              <label for="signup-username">Username</label>
+              <input type="text" id="signup-username" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9_]+">
+              <small>Letters, numbers, and underscores only</small>
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" required>
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="signup-password" required minlength="6">
+                <button type="button" class="password-toggle" id="signup-pw-toggle" aria-label="Show password">
+                  <svg class="pw-eye-show" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <svg class="pw-eye-hide" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                </button>
+              </div>
+            </div>
+            <div id="signup-error" class="form-error hidden"></div>
+            <button type="submit" class="btn btn-primary btn-full">Sign Up</button>
+          </form>
+          <div class="auth-divider"><span>or</span></div>
+          <button type="button" class="btn btn-outline btn-full" id="signup-google-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.15-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.36c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.34H2.18C1.43 8.78 1 10.34 1 12.27c0 1.93.43 3.49 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.9c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.34l3.66 2.84c.86-2.6 3.29-4.28 6.15-4.28z" fill="#EA4335"/></svg>
+            Continue with Google
+          </button>
+          <p class="auth-switch">Already have an account? <a href="#" id="show-login">Log in</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/scripts/supabaseClient.js"></script>
+  <script src="/scripts/auth.js"></script>
+  <script src="/scripts/transitions.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="/scripts/public-shell.js"></script>
+  <script src="/public/about/about.js"></script>
+</body>
+</html>

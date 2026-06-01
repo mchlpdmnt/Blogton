@@ -1,0 +1,49 @@
+/* =========================================================
+   SEARCH PAGE — Results page with inline search bar
+   Scope: body.page-search
+   Source: app.css lines 884-920
+body.page-search { overflow-y: auto; }
+
+   NOTE — .search-bar DELETED (Flag 4 resolution):
+   app.css lines 491-521 defined a .search-bar component
+   (input + submit button row). Verified: no HTML page or JS
+   file references this class. search.html and search.js both
+   use .search-page-bar / #search-page-input exclusively.
+   The rule set has been dropped.
+   ========================================================= */
+
+/* In-page search bar */
+.page-search .search-page-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.page-search .search-page-bar-icon {
+  position: absolute;
+  left: 1rem;
+  width: 16px;
+  height: 16px;
+  fill: var(--muted);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.page-search #search-page-input {
+  width: 100%;
+  padding: 0.8rem 1.1rem 0.8rem 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.page-search #search-page-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.page-search #search-page-input::placeholder { color: var(--muted); }

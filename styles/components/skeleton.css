@@ -1,0 +1,51 @@
+/* =========================================================
+   SKELETON — Loading placeholders
+   Source: app.css lines 572-592
+   ========================================================= */
+.skeleton {
+  background: linear-gradient(90deg, var(--surface) 25%, var(--border) 50%, var(--surface) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 9px;
+}
+@keyframes shimmer {
+  0%   { background-position:  200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+.skeleton-image          { height: 200px; }
+.skeleton-text           { height: 16px; margin: 0.8rem 1.4rem; }
+.skeleton-text.short     { width: 60%; }
+.skeleton-text.title     { height: 22px; width: 80%; }
+
+/* ── Blog card skeleton ─────────────────────────────────────────────────────
+   Matches the exact shape of .blog-card so masonry columns hold their
+   width and height while data is in-flight. JS toggles .blog-card--skeleton
+   on placeholder elements; clearSkeletons() removes them once cards arrive.
+   ───────────────────────────────────────────────────────────────────────── */
+.blog-card--skeleton {
+  pointer-events: none; /* prevent accidental clicks on placeholders */
+  user-select: none;
+}
+
+/* Fade skeletons in so they don't flash abruptly */
+.blog-card--skeleton {
+  animation: skeleton-card-in 0.2s ease forwards;
+}
+@keyframes skeleton-card-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Every shimmer block inside a skeleton card shares the same pulse timing
+   but staggers slightly based on DOM order for a wave-like effect */
+.blog-card--skeleton .skeleton:nth-child(1) { animation-delay: 0ms;   }
+.blog-card--skeleton .skeleton:nth-child(2) { animation-delay: 80ms;  }
+.blog-card--skeleton .skeleton:nth-child(3) { animation-delay: 160ms; }
+.blog-card--skeleton .skeleton:nth-child(4) { animation-delay: 240ms; }

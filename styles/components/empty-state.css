@@ -1,0 +1,32 @@
+/* =========================================================
+   EMPTY STATES & FEEDBACK MESSAGES
+   ========================================================= */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--muted);
+}
+.empty-state svg { width: 48px; height: 48px; margin-bottom: 1rem; opacity: 0.4; }
+.empty-state p   { font-size: 0.95rem; line-height: 1.6; }
+
+.error-msg {
+  color: #b52a2a;
+[data-theme="dark"] .error-msg { color: #e05555; }
+  background: #fdf1f1;
+  border-radius: 7px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+[data-theme="dark"] .error-msg {
+  background: rgba(181, 42, 42, 0.15);
+}
+
+.success-msg {
+  color: #1a7a4c;
+  background: rgba(0,103,79,0.08);
+  border-radius: 7px;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}

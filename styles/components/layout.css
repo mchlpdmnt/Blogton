@@ -1,0 +1,50 @@
+/* =========================================================
+   APP LAYOUT — Page containers & shared typography
+   Source: app.css lines 166-197
+   ⚠️  AMBIGUITY FLAG — see REFACTOR.md §5:
+       .app-page-wide is defined here but not referenced in
+       any current HTML page. Verify usage before keeping.
+   ========================================================= */
+.app-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 2rem) 1.5rem 4rem;
+  min-height: 100vh;
+}
+
+.app-page-wide {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: calc(var(--nav-h) + 2rem) 1.5rem 4rem;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.02em;
+  margin-bottom: 1.75rem;
+}
+.page-title em { font-style: italic; color: var(--accent); }
+
+.page-subtitle {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: -1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .app-page, .app-page-wide {
+    padding: calc(var(--nav-h) + 1rem) 1rem 3rem;
+  }
+}
+@media (max-width: 560px) {
+  .app-page, .app-page-wide {
+    padding: calc(var(--nav-h) + 0.75rem) 0.85rem 2.5rem;
+  }
+}

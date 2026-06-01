@@ -1,0 +1,11 @@
+/* =========================================================
+   USER PAGE — Other user's public profile
+   Layout is shared with profile.css (.profile-layout,
+   .profile-sidebar, .profile-main, etc.).
+   Only page-user-specific overrides live here.
+   ========================================================= */
+
+/* The user page has no edit button so no gap needed in sidebar identity */
+body.page-user .profile-sidebar-identity {
+  justify-content: flex-start;
+}

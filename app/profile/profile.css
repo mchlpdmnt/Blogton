@@ -1,0 +1,897 @@
+/* =========================================================
+   PROFILE PAGE â€” Two-column layout
+   Left: sidebar (cover + avatar + info + about me)
+   Right: sticky tab bar + scrollable post list
+   Scope: body.page-profile  AND  body.page-user
+   ========================================================= */
+
+/* â”€â”€ Page override â€” full-width container â”€â”€ */
+body.page-profile .app-page,
+body.page-user    .app-page {
+  max-width: 1400px;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* â”€â”€ Lock page scroll; only the right panel scrolls â”€â”€ */
+body.page-profile,
+body.page-user {
+  overflow: hidden;
+}
+
+body.page-profile .app-page,
+body.page-user    .app-page {
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+/* #profile-content is between .app-page and .profile-layout â€”
+   must propagate height or the flex chain breaks and overflow-y never fires */
+body.page-profile #profile-content,
+body.page-user    #profile-content {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;   /* overlay's containing block */
+  overflow: hidden;     /* clips the slide-in animation at panel edges */
+}
+
+/* â”€â”€ Two-column layout â”€â”€ */
+.profile-layout {
+  display: flex;
+  gap: 2.5rem;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+}
+
+/* â”€â”€ LEFT SIDEBAR â”€â”€ */
+.profile-sidebar {
+  flex: 0 0 60%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Cover image */
+.profile-cover-sm {
+  width: 100%;
+  height: 300px;
+  background: var(--accent-dim);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.profile-cover-sm img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Avatar + edit btn row */
+.profile-sidebar-identity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0 0;
+  margin-top: -44px;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+
+.profile-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-avatar-text {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.profile-edit-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--muted);
+  text-decoration: none;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.profile-edit-icon-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+.profile-edit-icon-btn svg { flex-shrink: 0; fill: currentColor; }
+
+/* Username + joined */
+.profile-sidebar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-username-copy {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  line-height: 1.2;
+  text-align: left;
+  transition: color 0.15s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.profile-username-copy:hover { color: var(--accent); }
+
+.profile-sidebar-info.has-display-name .profile-username-copy,
+.profile-sidebar-info.has-display-name .profile-username-static {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Static username â€” read-only view (other user's profile) */
+.profile-username-static {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.profile-joined {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* â”€â”€ About Me section â”€â”€ */
+.profile-about {
+  padding: 0.85rem 0.25rem 0;
+  border-top: none;
+  margin-top: 0.85rem;
+}
+
+.profile-about-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0 0 0.45rem;
+}
+
+.profile-about-text {
+  font-size: 0.875rem;
+  color: var(--fg);
+  line-height: 1.65;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.profile-about-placeholder {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0;
+}
+
+.profile-about-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-style: normal;
+}
+.profile-about-link:hover { text-decoration: underline; }
+
+/* â”€â”€ RIGHT PANEL â”€â”€
+   position: relative makes it the containing block for the
+   settings overlay. overflow: hidden clips the overlay
+   during its slide-in animation without nuking the scroll. */
+.profile-main {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inner scroll wrapper â€” replaces old overflow-y: auto on
+   .profile-main. Sits between the panel and its content so
+   an absolutely-positioned overlay can cover the panel area
+   without being carried away by scroll position.           */
+.profile-main-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 1.25rem;
+  padding-right: 1rem;
+  padding-bottom: 2.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.profile-main-scroll::-webkit-scrollbar       { width: 3px; }
+.profile-main-scroll::-webkit-scrollbar-track { background: transparent; }
+.profile-main-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+.profile-main-scroll::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+/* Sidebar scrollbar â€” same treatment */
+.profile-sidebar {
+  flex: 0 0 60%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.profile-sidebar::-webkit-scrollbar {
+  width: 2px;
+}
+.profile-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.profile-sidebar::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 999px;
+}
+.profile-sidebar:hover::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+.profile-sidebar:hover {
+  scrollbar-color: var(--border) transparent;
+}
+.profile-tabs-row {
+  flex-shrink: 0;
+  background: var(--bg);
+  padding: 0 1rem 0 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+/* Right panel cards â€” single-column stack */
+.profile-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* â”€â”€ Responsive â”€â”€ */
+@media (max-width: 768px) {
+  body.page-profile .app-page,
+  body.page-user    .app-page {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Restore normal page scroll on mobile */
+  body.page-profile,
+  body.page-user {
+    overflow: auto;
+  }
+
+  body.page-profile .app-page,
+  body.page-user    .app-page {
+    height: auto;
+    overflow: visible;
+    display: block;
+    padding-bottom: 3rem;
+  }
+
+  body.page-profile #profile-content,
+  body.page-user    #profile-content {
+    flex: none;
+    display: block;
+    min-height: unset;
+    overflow: visible; /* let page scroll handle it on mobile */
+  }
+
+  .profile-layout {
+    flex-direction: column;
+    gap: 1.25rem;
+    flex: none;
+    min-height: unset;
+    height: auto;
+    align-items: stretch;
+  }
+
+  .profile-sidebar {
+    flex: none;
+    width: 100%;
+    overflow-y: visible;
+  }
+
+  .profile-main {
+    overflow: visible;
+    min-height: unset;
+  }
+  .profile-main-scroll {
+    overflow-y: visible;
+    padding-top: 0.75rem;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+
+  .profile-tabs-row {
+    padding-right: 0;
+  }
+
+  .profile-cover-sm         { height: 180px; }
+
+  /* Identity row starts BELOW the cover â€” no negative margin on the whole row.
+     Only the avatar independently overlaps the cover via its own margin-top.
+     Username text and edit button are completely outside the cover photo.    */
+.profile-sidebar-identity {
+    margin-top: 0;
+    align-items: center;
+    padding: 0.35rem 0 0.65rem;
+    gap: 0.65rem;
+  }
+
+  /* Avatar alone pokes up into the cover */
+  .profile-avatar {
+    margin-top: -20px;
+    flex-shrink: 0;
+    align-self: flex-start;
+  }
+
+  /* Edit button: back in normal flow, floats to the right of the identity row */
+  .profile-sidebar-card { position: static; }
+  .profile-edit-icon-btn {
+    position: static;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .profile-avatar           { width: 96px; height: 96px; }
+  .profile-avatar-text      { font-size: 2rem; }
+}
+
+@media (max-width: 480px) {
+  .profile-cover-sm { height: 160px; }
+}
+
+/* =========================================================
+   PROFILE SETTINGS OVERLAY
+   Full-screen slide-in that overlaps the entire profile view.
+   ========================================================= */
+/* Settings overlay â€” covers only .profile-main (position: relative
+   containing block). Not a full-screen takeover; the sidebar stays
+   visible. Slides in from the right within the panel bounds.       */
+.pso-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: var(--bg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.pso-overlay::-webkit-scrollbar       { width: 3px; }
+.pso-overlay::-webkit-scrollbar-track { background: transparent; }
+.pso-overlay::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+
+/* â”€â”€ Mobile: fixed FULL-SCREEN â€” covers the navbar completely.
+   Uses inset: 0 / top: 0 so it sits above everything.
+   Rise-up entry (translateY) replaces the slide-right on mobile. */
+@media (max-width: 768px) {
+  body.page-profile.profile-settings-open .app-navbar,
+  body.page-profile.profile-settings-open .nav-mobile-search-overlay,
+  body.page-profile.profile-settings-open .nav-mobile-search-dropdown {
+    display: none !important;
+  }
+
+  .pso-overlay {
+    position: fixed;
+    inset: 0;            /* top: 0 â€” covers navbar */
+    height: 100dvh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    z-index: 10000;       /* above navbar z-index */
+    transform: translateY(100%);
+    transition: transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+.pso-overlay.pso-visible { transform: translate(0, 0); }
+
+/* No nav-h offset needed â€” overlay is panel-relative, not viewport-relative */
+.pso-inner {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.75rem 1.75rem 7rem;
+}
+
+/* Header row */
+.pso-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.pso-back {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--fg);
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.pso-back:hover { background: var(--surface); }
+
+/* â”€â”€ Inline tab switcher â”€â”€ */
+.pso-tabs {
+  display: flex;
+  gap: 0.2rem;
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.2rem;
+}
+.pso-tab-btn {
+  flex: 1;
+  padding: 0.38rem 0.6rem;
+  border: none;
+  border-radius: 7px;
+  background: none;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.pso-tab-btn:hover { color: var(--fg); background: var(--bg); }
+.pso-tab-btn.pso-tab-active {
+  background: var(--bg);
+  color: var(--fg);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+
+.pso-save-btn {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--fg);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--bg);
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+.pso-save-btn:hover:not(:disabled) { opacity: 0.78; }
+.pso-save-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Body */
+.pso-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.65rem;
+}
+
+.pso-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+}
+
+/* Section cards */
+.pso-section {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  background: var(--bg);
+}
+
+.pso-accordion {
+  padding: 0;
+  overflow: hidden;
+}
+
+.pso-accordion-trigger {
+  width: 100%;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  border: 0;
+  background: transparent;
+  color: var(--fg);
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pso-accordion-trigger:hover {
+  background: var(--surface);
+}
+
+.pso-accordion-chev {
+  color: var(--muted);
+  flex-shrink: 0;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pso-accordion-open .pso-accordion-chev {
+  transform: rotate(180deg);
+}
+
+.pso-accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pso-accordion-open .pso-accordion-content {
+  grid-template-rows: 1fr;
+}
+
+.pso-accordion-content-inner {
+  min-height: 0;
+  overflow: hidden;
+  padding: 0 1.2rem;
+}
+
+.pso-accordion-open .pso-accordion-content-inner {
+  padding-bottom: 1.25rem;
+}
+
+.pso-danger-trigger {
+  color: #c0392b;
+}
+
+.pso-section-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--fg);
+  text-align: left;
+  margin: 0 0 0.35rem;
+}
+.pso-section-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+/* Avatar preview */
+.pso-avatar-preview {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.pso-avatar-img {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+}
+.pso-avatar-placeholder {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 500;
+  border: 2px solid var(--border);
+}
+
+/* Banner preview */
+.pso-banner-preview {
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.pso-banner-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+.pso-banner-placeholder {
+  width: 100%; height: 160px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--border);
+}
+
+/* Upload row */
+.pso-upload-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.pso-upload-btn {
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: none;
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.pso-upload-btn:hover { background: var(--surface); border-color: var(--muted); }
+
+.pso-delete-btn {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  color: var(--muted);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.pso-delete-btn:hover { color: #c0392b; border-color: rgba(192,57,43,0.35); background: rgba(192,57,43,0.06); }
+
+/* Bio textarea */
+.pso-bio-textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  resize: vertical;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.18s;
+}
+.pso-bio-textarea:focus { border-color: var(--accent); background: var(--bg); }
+
+.pso-char-count {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: right;
+  margin: 0.4rem 0 0;
+}
+
+/* â”€â”€ Username field â”€â”€ */
+.pso-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.18s;
+}
+.pso-field:focus-within { border-color: var(--accent); background: var(--bg); }
+
+.pso-username-at {
+  padding: 0 0.1rem 0 0.9rem;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--muted);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.pso-username-input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.72rem 0.9rem 0.72rem 0.25rem;
+  border: none;
+  background: transparent;
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.pso-field-meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--muted);
+  text-align: right;
+  margin: 0.4rem 0 0;
+}
+
+.pso-field-error {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: #c0392b;
+  margin: 0.4rem 0 0;
+}
+.pso-field-error.hidden { display: none; }
+
+/* â”€â”€ Display name in profile sidebar â”€â”€ */
+.profile-display-name {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--fg);
+  line-height: 1.2;
+  margin-bottom: 0.1rem;
+}
+
+/* â”€â”€ Two-button header actions â”€â”€ */
+.profile-header-actions {
+  display: flex;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+/* â”€â”€ Plain text input (display name, delete confirm) â”€â”€ */
+.pso-plain-field {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  overflow: hidden;
+  transition: border-color 0.18s;
+}
+.pso-plain-field:focus-within { border-color: var(--accent); background: var(--bg); }
+.pso-plain-input {
+  width: 100%;
+  padding: 0.72rem 0.9rem;
+  border: none;
+  background: transparent;
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* â”€â”€ Settings panel: dark mode toggle row â”€â”€ */
+.pso-setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.pso-setting-label { flex: 1; min-width: 0; }
+.pso-setting-name {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--fg);
+  margin-bottom: 0.1rem;
+}
+.pso-setting-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* â”€â”€ Toggle switch â”€â”€ */
+.pso-toggle {
+  position: relative;
+  width: 44px; height: 24px;
+  border-radius: 999px;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  padding: 0;
+}
+.pso-toggle.pso-toggle-on { background: var(--accent); }
+.pso-toggle-knob {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.pso-toggle.pso-toggle-on .pso-toggle-knob { transform: translateX(20px); }
+
+/* â”€â”€ Danger zone â”€â”€ */
+.pso-danger-section {
+  border-color: rgba(192, 57, 43, 0.3);
+  background: rgba(192, 57, 43, 0.03);
+}
+[data-theme="dark"] .pso-danger-section {
+  border-color: rgba(220, 80, 60, 0.35);
+  background: rgba(220, 80, 60, 0.06);
+}
+.pso-danger-title { color: #c0392b; }
+[data-theme="dark"] .pso-danger-title { color: #e05a47; }
+
+.pso-danger-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(192,57,43,0.5);
+  background: none;
+  color: #c0392b;
+  font-family: var(--sans);
+  font-size: 0.83rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  margin-top: 1rem;
+}
+.pso-danger-btn:hover { background: #c0392b; color: #fff; }
+.pso-danger-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+[data-theme="dark"] .pso-danger-title { color: #e05a47; }
+[data-theme="dark"] .pso-danger-btn { border-color: rgba(224,90,71,0.5); color: #e05a47; }
+[data-theme="dark"] .pso-danger-btn:hover { background: #c0392b; color: #fff; }
+
+/* â”€â”€ Delete confirm inline box â”€â”€ */
+.pso-delete-confirm {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.pso-delete-confirm.hidden { display: none; }
+.pso-delete-confirm-text {
+  font-size: 0.84rem;
+  color: var(--fg);
+  margin: 0 0 0.75rem;
+}
+.pso-delete-confirm-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,58 @@
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn {
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: opacity 0.18s, background 0.18s, transform 0.1s;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-outline { background: transparent; border: 1px solid var(--border); color: var(--fg); }
+.btn-outline:hover { background: var(--surface); }
+
+.btn-primary { background: var(--fg); color: var(--bg); }
+.btn-primary:hover { opacity: 0.8; }
+
+.btn-accent { background: var(--accent); color: var(--bg); }
+.btn-accent:hover { background: var(--accent-mid); }
+
+.btn-ghost { background: transparent; color: var(--muted); }
+.btn-ghost:hover { color: var(--fg); }
+
+.btn-icon {
+  background: transparent; border: 1px solid var(--border);
+  border-radius: 999px; width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 1rem; color: var(--fg);
+  transition: background 0.18s;
+}
+.btn-icon:hover { background: var(--surface); }
+
+.btn-lg   { padding: 0.75rem 2rem; font-size: 1rem; }
+.btn-full { width: 100%; justify-content: center; border-radius: 9px; }
+
+/* Destructive — used in delete confirmation modals */
+.btn-danger {
+  background: #b52a2a;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.18s;
+}
+[data-theme="dark"] .btn-danger { background: #c43d3d; }
+.btn-danger:hover { opacity: 0.85; }
